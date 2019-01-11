@@ -189,3 +189,14 @@ class GlanceIPv6Context(BindHostContext):
             ctxt['registry_host'] = '0.0.0.0'
 
         return ctxt
+
+
+class BarbicanContext(OSContextGenerator):
+
+    def __call__(self):
+        return {
+            'barbican_related': is_relation_made(
+                relation='barbican',
+                keys='private-address'
+            )
+        }

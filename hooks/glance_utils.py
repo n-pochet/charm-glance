@@ -166,6 +166,7 @@ CONFIG_FILES = OrderedDict([
                           glance_contexts.ObjectStoreContext(),
                           glance_contexts.CinderStoreContext(),
                           glance_contexts.HAProxyContext(),
+                          glance_contexts.BarbicanContext(),
                           context.SyslogContext(),
                           glance_contexts.LoggingConfigContext(),
                           glance_contexts.GlanceIPv6Context(),

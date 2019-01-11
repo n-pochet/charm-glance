@@ -742,3 +742,9 @@ class GlanceRelationTests(CharmTestCase):
              "python-os-brick",
              "python-oslo.rootwrap"], fatal=True
         )
+
+    @patch.object(relations, 'CONFIGS')
+    def test_barbican_joined_changed_broken(self, configs):
+        relations.barbican_hook()
+        self.assertEqual([call('/etc/glance/glance-api.conf')],
+                         configs.write.call_args_list)

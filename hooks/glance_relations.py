@@ -157,6 +157,14 @@ def install_hook():
         service_stop(service)
 
 
+@hooks.hook('barbican-relation-joined')
+@hooks.hook('barbican-relation-changed')
+@hooks.hook('barbican-relation-broken')
+@restart_on_change(restart_map())
+def barbican_hook():
+    CONFIGS.write(GLANCE_API_CONF)
+
+
 @hooks.hook('shared-db-relation-joined')
 def db_joined():
     if config('prefer-ipv6'):

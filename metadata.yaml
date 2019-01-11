@@ -47,6 +47,9 @@ requires:
     scope: container
   certificates:
     interface: tls-certificates
+  barbican:
+    interface: barbican
+    optional: true
 peers:
   cluster:
     interface: glance-ha

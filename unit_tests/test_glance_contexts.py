@@ -175,3 +175,13 @@ class TestGlanceContexts(CharmTestCase):
         ctxt = contexts.GlanceIPv6Context()
         self.assertEqual(ctxt(), {'bind_host': '0.0.0.0',
                                   'registry_host': '0.0.0.0'})
+
+    def test_barbican_related(self):
+        self.is_relation_made.return_value = True
+        self.assertEqual(contexts.BarbicanContext()(),
+                         {'barbican_related': True})
+
+    def test_barbican_not_related(self):
+        self.is_relation_made.return_value = False
+        self.assertEqual(contexts.BarbicanContext()(),
+                         {'barbican_related': False})
